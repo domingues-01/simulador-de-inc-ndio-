@@ -1,22 +1,11 @@
-/* ==========================================================================
-   1. RESET GLOBAL & CONFIGURAÇÕES BASE
-   Garante consistência visual limpando margens e paddings de todos os navegadores.
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Central de Variáveis de Cores (Alto Contraste e Temática Agro/Sustentável) */
+/* Central de Variáveis de Cores (Temática Rosa em Degradê e Alto Contraste) */
 :root {
-    --cor-primaria: #1b4332;      /* Verde Floresta (Base, Sustentabilidade) */
-    --cor-secundaria: #d90429;    /* Vermelho/Laranja Alerta (Destaque de Risco) */
+    --cor-primaria: #d81b60;      /* Rosa Escuro (Para Títulos e Destaques Principais) */
+    --cor-secundaria: #ff80ab;    /* Rosa Claro (Para detalhes e transições) */
     --cor-fundo: #f8f9fa;         /* Branco Gelo (Leitura Confortável) */
     --cor-card: #ffffff;          /* Branco Puro para blocos de conteúdo */
-    --cor-texto: #212529;         /* Cinza Escuro quase preto (Alto Contraste) */
-    --cor-texto-suave: #495057;   /* Cinza Médio para textos secundários */
+    --cor-texto: #000000;         /* Preto Puro (Para leitura nítida do texto regular) */
+    --cor-texto-suave: #000000;   /* Garantindo que textos secundários também fiquem pretos */
     --borda-raio: 8px;            /* Arredondamento padrão para suavizar a interface */
 }
 
@@ -31,13 +20,13 @@ body {
    2. LAYOUT & COMPONENTES PRINCIPAIS
    ========================================================================== */
 
-/* Cabeçalho */
+/* Cabeçalho com Degradê de Rosa Claro para Rosa Escuro */
 header {
-    background-color: var(--cor-primaria);
-    color: #ffffff;
+    background: linear-gradient(135deg, #ff80ab 0%, #d81b60 100%);
+    color: #ffffff; /* Mantido branco para leitura sobre o fundo escuro do degradê */
     padding: 40px 20px;
     text-align: center;
-    border-bottom: 5px solid var(--cor-secundaria);
+    border-bottom: 5px solid #c2185b;
 }
 
 header h1 {
@@ -67,6 +56,7 @@ section {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* Títulos das seções em Rosa */
 section h2 {
     color: var(--cor-primaria);
     margin-bottom: 15px;
@@ -75,138 +65,8 @@ section h2 {
     padding-bottom: 8px;
 }
 
+/* Resto dos textos em Preto */
 section p {
-    color: var(--cor-texto-suave);
+    color: var(--cor-texto);
     margin-bottom: 15px;
 }
-
-/* ==========================================================================
-   3. FORMULÁRIO E UTILITÁRIO INTERATIVO
-   ========================================================================== */
-
-.campo-grupo {
-    margin-bottom: 20px;
-}
-
-.campo-grupo label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--cor-texto);
-}
-
-.campo-grupo input {
-    width: 100%;
-    padding: 12px 16px;
-    font-size: 1rem;
-    border: 2px solid #ced4da;
-    border-radius: var(--borda-raio);
-    background-color: #ffffff;
-    color: var(--cor-texto);
-    transition: border-color 0.3s ease;
-}
-
-/* Efeito visual quando o usuário clica no input */
-.campo-grupo input:focus {
-    outline: none;
-    border-color: var(--cor-primaria);
-}
-
-/* Botão de Ação Principal */
-button {
-    width: 100%;
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    border: none;
-    padding: 14px 20px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: var(--borda-raio);
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-button:hover {
-    background-color: #143225; /* Escurece levemente no hover */
-}
-
-button:active {
-    transform: scale(0.98); /* Efeito de clique físico */
-}
-
-/* Container de Resposta do JS (Erros ou Resultados) */
-#container-resposta {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: var(--borda-raio);
-    font-weight: 600;
-    text-align: center;
-}
-
-/* Classes utilitárias que o JS vai injetar para dar feedback visual na tela */
-.alerta-erro {
-    background-color: #f8d7da;
-    color: #842029;
-    border: 1px solid #f5c2c7;
-}
-
-.resultado-sucesso {
-    background-color: #e2f0d9;
-    color: #385723;
-    border: 1px solid #c5e0b4;
-}
-
-/* ==========================================================================
-   4. CHECKLIST E COMPONENTES DE LISTA
-   ========================================================================== */
-
-.lista-checklist {
-    list-style: none;
-}
-
-.lista-checklist li {
-    background-color: #f8f9fa;
-    margin-bottom: 10px;
-    padding: 12px 15px;
-    border-radius: var(--borda-raio);
-    border-left: 4px solid var(--cor-primaria);
-    transition: background-color 0.2s ease;
-}
-
-.lista-checklist li:hover {
-    background-color: #e9ecef;
-}
-
-.lista-checklist label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    color: var(--cor-texto-suave);
-}
-
-.lista-checklist input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-    accent-color: var(--cor-primaria); /* Altera a cor do check interno */
-}
-
-#emergencia ul {
-    padding-left: 20px;
-    color: var(--cor-texto-suave);
-}
-
-#emergencia li {
-    margin-bottom: 10px;
-}
-
-/* ==========================================================================
-   5. RODAPÉ
-   ========================================================================== */
-footer {
-    text-align: center;
-    padding: 30px 20px;
-    background-color: #212529;
-    color: #f8f9fa;
